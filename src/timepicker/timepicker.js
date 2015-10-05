@@ -238,7 +238,7 @@ angular.module('ui.bootstrap.timepicker', [])
 
     hoursInputEl.bind('blur', function(e) {
       ngModelCtrl.$setTouched();
-      if ($scope.hours === null || $scope.hours === "") {
+      if ($scope.hours === null || $scope.hours === '') {
         invalidate(true);
       } else if (!$scope.invalidHours && $scope.hours < 10) {
         $scope.$apply(function() {
@@ -318,8 +318,8 @@ angular.module('ui.bootstrap.timepicker', [])
     if (ngModelCtrl.$modelValue == null) {
       $scope.hours = null;
       $scope.minutes = null;
-	  $scope.meridian = meridians[0];
-	} else {
+      $scope.meridian = meridians[0];
+    } else {
       var hours = selected.getHours(), minutes = selected.getMinutes();
 
       if ($scope.showMeridian) {
@@ -331,7 +331,7 @@ angular.module('ui.bootstrap.timepicker', [])
         $scope.minutes = pad(minutes);
       }
       $scope.meridian = selected.getHours() < 12 ? meridians[0] : meridians[1];
-	}
+    }
   }
 
   function addMinutes(date, minutes) {
@@ -376,12 +376,12 @@ angular.module('ui.bootstrap.timepicker', [])
   $scope.toggleMeridian = function() {
     var minutes = getMinutesFromTemplate(),
         hours = getHoursFromTemplate();
-    
+
     if (!$scope.noToggleMeridian()) {
       if (angular.isDefined(minutes) && angular.isDefined(hours)) {
         addMinutesToSelected(12 * 60 * (selected.getHours() < 12 ? 1 : -1));
       } else {
-        $scope.meridian = $scope.meridian == meridians[0] ? meridians[1] : meridians[0];
+        $scope.meridian = $scope.meridian === meridians[0] ? meridians[1] : meridians[0];
       }
     }
   };
