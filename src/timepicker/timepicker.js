@@ -221,15 +221,13 @@ angular.module('ui.bootstrap.timepicker', [])
       var hours = getHoursFromTemplate(),
         minutes = getMinutesFromTemplate();
 
-      if (angular.isDefined(hours)) {
-        if (angular.isDefined(minutes)) {
-          selected.setHours(hours);
-          selected.setMinutes(minutes);
-          if (selected < min || selected > max) {
-            invalidate(true);
-          } else {
-            refresh('h');
-          }
+      if (angular.isDefined(hours) && angular.isDefined(minutes)) {
+        selected.setHours(hours);
+        selected.setMinutes(minutes);
+        if (selected < min || selected > max) {
+          invalidate(true);
+        } else {
+          refresh('h');
         }
       } else {
         invalidate(true);
@@ -242,7 +240,7 @@ angular.module('ui.bootstrap.timepicker', [])
         invalidate(true);
       } else if (!$scope.invalidHours && $scope.hours < 10) {
         $scope.$apply(function() {
-        $scope.hours = pad($scope.hours);
+          $scope.hours = pad($scope.hours);
         });
       }
     });
@@ -251,15 +249,13 @@ angular.module('ui.bootstrap.timepicker', [])
       var minutes = getMinutesFromTemplate(),
         hours = getHoursFromTemplate();
 
-      if (angular.isDefined(minutes)) {
-        if (angular.isDefined(hours)) {
-          selected.setHours(hours);
-          selected.setMinutes(minutes);
-          if (selected < min || selected > max) {
-            invalidate(undefined, true);
-          } else {
-            refresh('m');
-          }
+      if (angular.isDefined(minutes) && angular.isDefined(hours)) {
+        selected.setHours(hours);
+        selected.setMinutes(minutes);
+        if (selected < min || selected > max) {
+          invalidate(undefined, true);
+        } else {
+          refresh('m');
         }
       } else {
         invalidate(undefined, true);
